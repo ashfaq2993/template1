@@ -1,0 +1,97 @@
+/* Background Colors */
+.shade1_bg {
+	background-color: #dbedff;
+}
+.shade2_bg {
+	background-color: #5674b9;
+}
+.shade3_bg {
+	background-color: #3f556b;
+}
+.grey_bg {
+	background-color: #efefef;
+}
+.white_bg {
+	background-color: #ffffff;
+}
+
+.shade1_bg_hover {
+	background-color: #ffffff;
+	transition: all 0.3s;
+}
+.shade1_bg_hover:hover {
+	background-color: #dbedff;
+	transition: all 0.3s;
+}
+
+.shade2_bg_hover {
+	color: #3f556b;
+	background-color: #ffffff;
+	transition: all 0.3s;
+}
+.shade2_bg_hover:hover {
+	color: #ffffff;
+	background-color: #5674b9;
+	transition: all 0.3s;
+}
+
+.shade3_bg_hover {
+	background-color: #ffffff;
+	transition: all 0.3s;
+}
+.shade3_bg_hover:hover {
+	background-color: #3f556b;
+	transition: all 0.3s;
+}
+	
+
+
+
+/* Text Colors */
+.white_txt {
+	color: #ffffff;
+}
+.light_txt  {
+	color: #5674b9;
+}
+.dark_txt {
+	color: #3f556b;
+}
+
+.white_txt_hover {
+	color: #3f556b;
+	transition: color 0.3s;
+}
+.white_txt_hover:hover {
+	color: #ffffff;
+	transition: color 0.3s;
+}
+
+.light_txt_hover  {
+	color: #5674b9;
+	transition: color 0.3s;
+}
+.light_txt_hover:hover  {
+	color: #ffffff;
+	transition: color 0.3s;
+}
+
+.dark_txt_hover {
+	color: #3f556b;
+	transition: color 0.3s;
+}
+.dark_txt_hover:hover {
+	color: #ffffff;
+	transition: color 0.3s;
+}
+
+/* Border Colors */
+.shade1_border {
+	border-color: #dbedff;
+}
+.shade2_border {
+	border-color: #5674b9;
+}
+.shade3_border {
+	border-color: #3f556b;
+}
