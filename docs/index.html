@@ -44,6 +44,17 @@ $(document).ready(function(){
 	})( jQuery );
 	
 	$("#panel_1").reveal();
+	$(".nav_links").each(function(i) {
+		$(this)
+		.delay(i*100)
+		.queue(function (next) { 
+			$(this).css({
+				'opacity': 1,
+				'line-height': '60px' 
+			}); 
+			next(); 
+		});
+	});
 	
 	$("#menu_1").click(function() {
 		$("#panel_1").reveal();
@@ -83,7 +94,7 @@ $(document).ready(function(){
 		<div id="panel_1" class="content_sub_panels">
 			<div class="col_1 col">
 				<div class="inner_div shadow">
-					<h2>Main Heading</h2>
+					<h2>Main Heading 1</h2>
 				</div>
 			</div>
 			
@@ -113,7 +124,7 @@ $(document).ready(function(){
 		<div id="panel_2" class="content_sub_panels">
 			<div class="col_1 col">
 				<div class="inner_div shadow">
-					<h2>Main Heading</h2>
+					<h2>Main Heading 2</h2>
 				</div>
 			</div>
 			
@@ -138,7 +149,7 @@ $(document).ready(function(){
 		<div id="panel_3" class="content_sub_panels">
 			<div class="col_1 col">
 				<div class="inner_div shadow">
-					<h2>Main Heading</h2>
+					<h2>Main Heading 3</h2>
 				</div>
 			</div>
 			
