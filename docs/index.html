@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,11 +14,57 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 <script src="js/jquery.bxslider.js"></script>
 
-<!-- <script>
+<script>
 $(document).ready(function(){
-
+	<!-- $(".content_sub_panels").hide(); -->
+	(function( $ ){
+	   $.fn.reveal = function() {
+		  this.css({
+			'top': '10px' ,
+			'visibility': 'visible',
+			'transform': 'scale(1)',
+			'max-height': 'none',
+			'opacity': '1'
+		  });
+		  return this;
+	   }; 
+	})( jQuery );
+	
+	(function( $ ){
+	   $.fn.conceal = function() {
+		  this.css({
+			'top': '110px',
+			'visibility': 'hidden',
+			'transform': 'scale(0.8)',
+			'max-height': '20vh',
+			'opacity': '0'
+		  });
+		  return this;
+	   }; 
+	})( jQuery );
+	
+	$("#panel_1").reveal();
+	
+	$("#menu_1").click(function() {
+		$("#panel_1").reveal();
+		$("#panel_2").conceal();
+		$("#panel_3").conceal();
+		
+	});
+	$("#menu_2").click(function() {
+		$("#panel_2").reveal();
+		$("#panel_1").conceal();
+		$("#panel_3").conceal();
+		
+	});
+	$("#menu_3").click(function() {
+		$("#panel_3").reveal();
+		$("#panel_1").conceal();
+		$("#panel_2").conceal();
+		
+	});
 });
-</script> -->
+</script>
 </head>
 
 <body>
@@ -25,15 +72,45 @@ $(document).ready(function(){
 	<div id="nav_panel" class="">
 		<div id="logo" class="nav_align"></div>
 		
-		<li class="nav_links hvr-underline-from-center">Menu 1</li>
-		<li class="nav_links hvr-underline-from-center">Menu 2</li>
-		<li class="nav_links hvr-underline-from-center">Menu 3</li>
+		<li id="menu_1" class="nav_links hvr-underline-from-center">Menu 1</li>
+		<li id="menu_2" class="nav_links hvr-underline-from-center">Menu 2</li>
+		<li id="menu_3" class="nav_links hvr-underline-from-center">Menu 3</li>
 		<li class="nav_links hvr-underline-from-center">Menu 4</li>
 		<li class="nav_links hvr-underline-from-center">Menu 5</li>
 	</div>
 	<div id="nav_panel_ghost" class=""></div>
 	<div id="content_panel" class="">
-		<div id="" class="content_sub_panels">
+		<div id="panel_1" class="content_sub_panels">
+			<div class="col_1 col">
+				<div class="inner_div shadow">
+					<h2>Main Heading</h2>
+				</div>
+			</div>
+			
+			<div class="col_2 col">
+				<div class="inner_div shadow">
+					<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
+					<br><br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
+					</p>
+					<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
+					<br><br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
+					</p>
+				</div>
+			</div>
+			<div class="col_6 col">
+				<div class="inner_div shadow">
+					<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
+					</p>
+				</div>
+			</div>
+		</div>
+		
+		<div id="panel_2" class="content_sub_panels">
 			<div class="col_1 col">
 				<div class="inner_div shadow">
 					<h2>Main Heading</h2>
@@ -53,6 +130,31 @@ $(document).ready(function(){
 				<div class="inner_div shadow">
 					<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
+					</p>
+				</div>
+			</div>
+		</div>
+		
+		<div id="panel_3" class="content_sub_panels">
+			<div class="col_1 col">
+				<div class="inner_div shadow">
+					<h2>Main Heading</h2>
+				</div>
+			</div>
+			
+			<div class="col_2 col">
+				<div class="inner_div shadow">
+					<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
+					<br><br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
+					</p>
+				</div>
+			</div>
+			<div class="col_6 col">
+				<div class="inner_div shadow">
+					<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam.
 					</p>
 				</div>
 			</div>
