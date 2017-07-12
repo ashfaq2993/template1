@@ -35,7 +35,7 @@ $(document).ready(function(){
 		  this.css({
 			'top': '110px',
 			'visibility': 'hidden',
-			'transform': 'scale(0.8)',
+			'transform': 'scale(0.9)',
 			'max-height': '20vh',
 			'opacity': '0'
 		  });
@@ -44,24 +44,62 @@ $(document).ready(function(){
 	})( jQuery );
 	
 	$("#panel_1").reveal();
+	$(".nav_links").each(function(i) {
+		$(this)
+		.delay(i*100)
+		.queue(function (next) { 
+			$(this).css({
+				'opacity': 1,
+				'line-height': '60px' 
+			}); 
+			next(); 
+		});
+	});
+	
+	var active_page = "#panel_1";
+	var active_link = "#menu_1";
+	$(active_link).css('background-color', '#84BBB5');
+	$(active_link).css('color', '#ffffff');
+	
 	
 	$("#menu_1").click(function() {
-		$("#panel_1").reveal();
-		$("#panel_2").conceal();
-		$("#panel_3").conceal();
-		
+		if (active_page!="#panel_1") {
+			$("#panel_1").reveal();
+			$(active_page).conceal();
+			$(active_link).css('background-color', '#ffffff');
+			$(active_link).css('color', '#000000');
+			active_page = "#panel_1";
+			active_link = "#menu_1";
+			
+			$(this).css('background-color', '#84BBB5');
+			$(this).css('color', '#ffffff');
+		}
 	});
 	$("#menu_2").click(function() {
-		$("#panel_2").reveal();
-		$("#panel_1").conceal();
-		$("#panel_3").conceal();
-		
+		if (active_page!="#panel_2") {
+			$("#panel_2").reveal();
+			$(active_page).conceal();
+			$(active_link).css('background-color', '#ffffff');
+			$(active_link).css('color', '#000000');
+			active_page = "#panel_2";
+			active_link = "#menu_2";
+			
+			$(this).css('background-color', '#84BBB5');
+			$(this).css('color', '#ffffff');
+		}
 	});
 	$("#menu_3").click(function() {
-		$("#panel_3").reveal();
-		$("#panel_1").conceal();
-		$("#panel_2").conceal();
-		
+		if (active_page!="#panel_3") {
+			$("#panel_3").reveal();
+			$(active_page).conceal();
+			$(active_link).css('background-color', '#ffffff');
+			$(active_link).css('color', '#000000');
+			active_page = "#panel_3";
+			active_link = "#menu_3";
+			
+			$(this).css('background-color', '#84BBB5');
+			$(this).css('color', '#ffffff');
+		}
 	});
 });
 </script>
