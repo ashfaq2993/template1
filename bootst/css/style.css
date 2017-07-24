@@ -1,0 +1,29 @@
+.no-radius {
+	border-radius: 0px !important;
+	max-height: 38px;
+}
+
+.navbar-nav > li > a, .navbar-brand {padding-top:8px !important; padding-bottom:8px !important;}
+.navbar {
+	min-height:38px !important;
+	margin-bottom: 0px;
+}
+.no-top-margin {
+	margin-top: 0px;
+}
+.bder {
+	border: medium solid #000000 !important;
+}
+.page-header {
+	padding: 0px !important;
+	margin: 0px !important;
+}
+.no-padding {
+	padding: 0px !important;
+}
+.side-pane {
+	min-width: 200px;
+}
+.breadcrumb {
+	
+}
