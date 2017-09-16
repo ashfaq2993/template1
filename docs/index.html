@@ -1,203 +1,110 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>Template</title>
+<title>Ashfaq</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="css/main.css" rel="stylesheet" type="text/css">
-<!-- <link href="css/color.css" rel="stylesheet" type="text/css"> -->
-<link href="css/jquery.bxslider.css" rel="stylesheet" type="text/css">
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-<script src="js/jquery.bxslider.js"></script>
+
+<style>
+body {
+	margin: 0px;
+	background-color: #000000;
+}
+pre {
+	font-size: 14px;
+	line-height: 18px;
+}
+.demo {
+	white-space:pre;
+	<!-- line-height: 16px; -->
+	display: block;
+	background-color: rgba(7, 193, 10, 0.08);
+	color: rgb(7, 193, 10);
+	margin: 2px;
+}
+.text-center {
+	text-align: center;
+}
+.demoInput {
+	white-space:pre;
+	<!-- line-height: 16px; -->
+	display: block;
+	background-color: rgba(7, 193, 10, 0.08);
+	color: rgb(7, 193, 10);
+	margin: 2px;
+}
+.blinker {   
+  animation-duration: 400ms;
+  animation-name: blink;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+</style>
 
 <script>
-$(document).ready(function(){
-	<!-- $(".content_sub_panels").hide(); -->
-	(function( $ ){
-	   $.fn.reveal = function() {
-		  this.css({
-			'top': '10px' ,
-			'visibility': 'visible',
-			'transform': 'scale(1)',
-			'max-height': 'none',
-			'opacity': '1'
-		  });
-		  return this;
-	   }; 
-	})( jQuery );
+$(document).keypress(function(e) {
+	if(e.keyCode != 13) {
+		$('#inputLine').append(e.key);
+	}
+});
+$(document).keyup(function(e) {
+	var input = $('#inputLine');
+	var inputAfter = $('#inputLineAfter');
+	var lineText = input.html();
+	var lineAfterText = inputAfter.html();
+	var lastChar = lineText.substr(lineText.length - 1);
+	var firstChar = lineAfterText.charAt(0);
 	
-	(function( $ ){
-	   $.fn.conceal = function() {
-		  this.css({
-			'top': '110px',
-			'visibility': 'hidden',
-			'transform': 'scale(0.9)',
-			'max-height': '20vh',
-			'opacity': '0'
-		  });
-		  return this;
-	   }; 
-	})( jQuery );
-	
-	$("#panel_1").reveal();
-	$(".nav_links").each(function(i) {
-		$(this)
-		.delay(i*100)
-		.queue(function (next) { 
-			$(this).css({
-				'opacity': 1,
-				'line-height': '60px' 
-			}); 
-			next(); 
-		});
-	});
-	
-	var active_page = "#panel_1";
-	var active_link = "#menu_1";
-	$(active_link).css('background-color', '#84BBB5');
-	$(active_link).css('color', '#ffffff');
-	
-	
-	$("#menu_1").click(function() {
-		if (active_page!="#panel_1") {
-			$("#panel_1").reveal();
-			$(active_page).conceal();
-			$(active_link).css('background-color', '#ffffff');
-			$(active_link).css('color', '#000000');
-			active_page = "#panel_1";
-			active_link = "#menu_1";
-			
-			$(this).css('background-color', '#84BBB5');
-			$(this).css('color', '#ffffff');
+	if(e.keyCode == 8) {
+		input.html(lineText.slice(0,-1))
+	}
+	if(e.keyCode == 46) {
+		inputAfter.html(lineAfterText.substring(1, lineAfterText	.length))
+	}
+	if(e.keyCode == 13) {
+		<!-- alert(lineText+lineAfterText) -->
+		$('#inputBlock').append($('<pre class="demoInput">> '+lineText+lineAfterText+'</pre>'))
+		input.html("");
+		inputAfter.html("");
+		if (lineText+lineAfterText == 'cls scr') {
+			$('.demoInput').remove();
 		}
-	});
-	$("#menu_2").click(function() {
-		if (active_page!="#panel_2") {
-			$("#panel_2").reveal();
-			$(active_page).conceal();
-			$(active_link).css('background-color', '#ffffff');
-			$(active_link).css('color', '#000000');
-			active_page = "#panel_2";
-			active_link = "#menu_2";
-			
-			$(this).css('background-color', '#84BBB5');
-			$(this).css('color', '#ffffff');
-		}
-	});
-	$("#menu_3").click(function() {
-		if (active_page!="#panel_3") {
-			$("#panel_3").reveal();
-			$(active_page).conceal();
-			$(active_link).css('background-color', '#ffffff');
-			$(active_link).css('color', '#000000');
-			active_page = "#panel_3";
-			active_link = "#menu_3";
-			
-			$(this).css('background-color', '#84BBB5');
-			$(this).css('color', '#ffffff');
-		}
-	});
+	}
+	
+	if(e.keyCode == 37) {
+		input.html(lineText.slice(0,-1))
+		inputAfter.prepend(lastChar)
+	}
+	if(e.keyCode == 39) {
+		input.append(firstChar)
+		inputAfter.html(lineAfterText.substring(1, lineAfterText	.length))
+	}
 });
 </script>
 </head>
 
 <body>
-<div id="container" class="">
-	<div id="nav_panel" class="">
-		<div id="logo" class="nav_align"></div>
-		
-		<li id="menu_1" class="nav_links hvr-underline-from-center">Menu 1</li>
-		<li id="menu_2" class="nav_links hvr-underline-from-center">Menu 2</li>
-		<li id="menu_3" class="nav_links hvr-underline-from-center">Menu 3</li>
-		<li class="nav_links hvr-underline-from-center">Menu 4</li>
-		<li class="nav_links hvr-underline-from-center">Menu 5</li>
-	</div>
-	<div id="nav_panel_ghost" class=""></div>
-	<div id="content_panel" class="">
-		<div id="panel_1" class="content_sub_panels">
-			<div class="col_1 col">
-				<div class="inner_div shadow">
-					<h2>Main Heading 1</h2>
-				</div>
-			</div>
-			
-			<div class="col_2 col">
-				<div class="inner_div shadow">
-					<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
-					<br><br>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
-					</p>
-					<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
-					<br><br>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
-					</p>
-				</div>
-			</div>
-			<div class="col_6 col">
-				<div class="inner_div shadow">
-					<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
-					</p>
-				</div>
-			</div>
-		</div>
-		
-		<div id="panel_2" class="content_sub_panels">
-			<div class="col_1 col">
-				<div class="inner_div shadow">
-					<h2>Main Heading 2</h2>
-				</div>
-			</div>
-			
-			<div class="col_2 col">
-				<div class="inner_div shadow">
-					<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
-					<br><br>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
-					</p>
-				</div>
-			</div>
-			<div class="col_6 col">
-				<div class="inner_div shadow">
-					<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
-					</p>
-				</div>
-			</div>
-		</div>
-		
-		<div id="panel_3" class="content_sub_panels">
-			<div class="col_1 col">
-				<div class="inner_div shadow">
-					<h2>Main Heading 3</h2>
-				</div>
-			</div>
-			
-			<div class="col_2 col">
-				<div class="inner_div shadow">
-					<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
-					<br><br>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam. Nam faucibus erat eu nisl mollis, vel lacinia turpis porttitor. Duis lectus arcu, dignissim at sapien id, tempus pharetra lorem. Ut nec congue dui, ut consectetur arcu. Mauris vestibulum rutrum augue. Quisque posuere lorem vel ullamcorper pharetra. Vestibulum convallis dolor a sem cursus fringilla. Nunc et tortor id ipsum accumsan pulvinar. Aenean sodales luctus ipsum quis volutpat. Morbi venenatis vitae augue non mattis. Proin eros tortor, malesuada at facilisis non, aliquam vitae ex.
-					</p>
-				</div>
-			</div>
-			<div class="col_6 col">
-				<div class="inner_div shadow">
-					<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum turpis non nibh egestas, in volutpat metus aliquam.
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+
+<pre class="demo text-center"> ===========================================================</pre>
+<pre class="demo text-center">|                                                           |</pre>
+<pre class="demo text-center">|                       --:WELCOME:--                       |</pre>
+<pre class="demo text-center">|                  MOHAMMED ASHFAQUE AHMED                  |</pre>
+<pre class="demo text-center">|                                                           |</pre>
+<pre class="demo text-center"> ===========================================================</pre>
+<br>
+<span id="inputBlock"></span>
+<pre class="demo">> <span id="inputLine"></span><span class="blinker">|</span><span id="inputLineAfter"></span></pre>
 </body>
 </html>
